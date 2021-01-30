@@ -15,10 +15,10 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
-usePassport(app)
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
-
+usePassport(app)
 app.use(routes) // 路由
 
 app.listen(PORT, () => {
