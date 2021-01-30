@@ -7,9 +7,10 @@ router.get('/', (req, res) => {
   console.log(req.user)
   return Todo.findAll({
     raw: true,
-    nest: true
+    nest: true,
+    where: { UserId: req.user.id }
   })
-    .then((todos) => { return res.render('index', { todos: todos }) })
+    .then((todos) => { return res.render('index', { todos }) })
     .catch((error) => { return res.status(422).json(error) })
 })
 
